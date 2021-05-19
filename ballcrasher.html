@@ -107,12 +107,12 @@ class Ball {
   // Gradually slows down
   stopShake() {
     if (this.xspeed > this.oxspeed) {
-      this.xspeed -= 0.6;
+      this.xspeed -= 1.6;
     } else {
       this.xspeed = this.oxspeed;
     }
     if (this.yspeed > this.oyspeed) {
-      this.yspeed -= 0.6;
+      this.yspeed -= 1.6;
     } else {
       this.yspeed = this.oyspeed;
     }
