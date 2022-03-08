@@ -1,18 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <link href="style.css" rel="stylesheet" />
+    <title>About Me</title>
+  </head>
 
-	<head>
-		<!--Created by Mr. Pauls
-			February 18, 2020
-			CMP621A
-		-->
-
-	<title> CMP621A  </title>
-	</head>
-
-	<body>
-		This is my first site! <br>
-		It is hosted on GitHub.
-		<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHoA2QMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAADAAECBAUGB//EAEQQAAEDAgMDCAYIBQEJAAAAAAEAAgMEEQUSITFBUQYTIjJhcYGRFDNCobHBBxUjUnKCktFTYtLh8JMWFyQ0RFWDosL/xAAaAQADAQEBAQAAAAAAAAAAAAAAAQIDBAUG/8QAKxEAAgIBAwIFAwUBAAAAAAAAAAECEQMEEiEFQRMxUXGhIiOxUmGR4fAV/9oADAMBAAIRAxEAPwDyINWbJ13d61WrMkH2ju9NjBqTOu3vCSePrt7wkI3C3VyqFmpWiQNVTO1WMFkTFqMQlbsSAAWKJYj5UraICgBYolisWUHBAFVwsoOCsOCGQkOgJCayLZK3YgKBJWRLdiVkBQKyVkSyayQiKVlOycBMCFkrIlksqAoEQmIRCExCQAklMjRRsgRqgrOk9Y7vVsP1VN/WPemMZOzrt/EEydujm94SA3nFVb6lEL7XVbNqqGFulmQ8yWZFjCXS8UMOT5kATKg5PdQJQIg5QIUyoEJFESErBPZMgBrJWTpIAjZNZSsnskBCyVlKyVkCoQCeyQT6JjIkKJCmRZRcglgyFFTOxRQIsBxVd20qYKGdqAEk3rDvSSb1h3pDNJz9Sgg6pE6lQG1MYQFPdQCdAyd0gpxUtTKx0kVPK+NouXhhsPFPSU1RXVDKajhkmnebNZG25P8AZFhQO6tUOH1uIuc2gpZ6hzesImF2XvO7xW/DhGF4KBJjcnplYNfQ4H2jZ2PftJ7B5lDxDlJV1MQp4C2mpR1YYGhjR4BS5eg0kUDyaxBvr30dOd4nqWtI8BdDfghZocUwon+WZ5/+EB8pcbuJJ7UiW5HZmkOd1TfYlbKuPdDuwtwP/O0JH8srvm1Q+rTfo1FO7ukCWTnW5Hk9L3LPqI3Qzlge63emrKWXEuHH5/o024RM7qvjPcbokmBVUUEc8oLInus2RzCGk8L8VVwOiNZVfaaxM1cePZ4q7iVdNiVWzDo5SKSM3LAejcb0rd0dLw43p3mprmlzd/BXbg1XIbQiOX8D9qqVFLPSuy1ET4nWvZ7S34rZqaV+BwxSwzvMTyS9m0Du7VoTFjKGJ0LjlcdMxzNJ33B23Fj33TOOO1upHIJl2uL8lYmxslhvG6RgfYbNRfYuZdhc7ZC27BwLjb5JKaZ1T0OZcxV+xRsnstD6nqtodCe59/kpDCJvbexnHRx+Se5CWg1P6GZhTWur9bh7qWGOUyteHuLbAEEW71TIsmnZzZsUsUts1TBOGigiP2FDTMhDVQO1TCjvSAZIbUk42hAyztTbNuiv4Lhr8VrW0zJI4WhpfJNIejGwbSfkN5sF1WMYJT8nMVrcNpBz0tOWxmaVjS5xLGuJHAdLRDdKzq0mmepy+HF06ORgw3EKiIS0+H1csR2Pjp3uafEBCdDKx5Y+GVrm7WuYQR4LvuTlBJHzlbUTeobmYHuNi4bAexaFVV4TUT85PQy19W62Z8szhfwBsAsvFPVj0PLdN/7+ThcLoJq1oa4CGBmr5ZAbAX3Deewe5aU2LMw+mfQYLC6njcLSzOtzs34juHYNF1kFVh9O7nKiio4eDIIgXeLnfLzV2TlhK9vN0VGxkbdM0gBACW9GuTo+edK+EeWESyE6O7bNumdFM0hropA4i4aWG58F6JNygLn3q5GSD7sMYHvI+ATN5RQi7aTCKYne+Vuc+ZS8QyfQcnZnnRhnyhwjdlOzRJkUpBJy6cSvToH4vWxumiw2gigB1lfA1rB+Y6e9FxbCJaLCJa6vqsPOWIS8zTUzXuLCbAk6AAnS+zTwV26ujlydOx43tnlV+nm/g8q+1zZri/BrSnmgj6L6pjwTfptNvcuip3tqw4vpGsG42Fj3aLpuS2LYHQOmosZoqc00zD9qyPpNdbTVCmbz6HJYfGU7XtT+TjmxPw7CCyNpM7gHPDRctv3cB70uTwwuKJ81UwmozkNYPu6LQfPHKHtjJMTidHa6fNQpxPRuL8MqJKOS+a8Li0E9oUJpnr5On5E4TxVJRVJP8+7J11S3EHcxTxSQxW6chaAe7ULU5NYPDVSRYeIJq7UFrB0WttexcdthfsWDimMYtJl+sahsmXZJzbLnvIAJ8UKkx10LucjlmhlHtxOyp0+xwvwc7l46qfZPhI9G5QYdiTAY6XCqyoeBYzNhPNtHBo2nvNu5chVYbWxdOroKpp4zQOaPgqzPpBx+mdlirOfj4TMAcPzNsfehVX0h43US29LmhiOj2iVz9ePSubeKHBDwdS8F7JxVeoS7iMoFh2CwQnssMxGm26y5sVrqupbHUTvfd28q+WS1z3xxyMighAMkkrw1g4XJP+WSUW2elLqeFYnkfYBV+jzQlrw4nN7G1YElrkA7DbVbM0E1HUGCfK67c7JGWLXt4gg2KyKyxnceK0hw6Pneozjnis8fYA7YoKZ6qgtDyBxHJ/Df+kpuYm3RSH8pVkVcg9sp/S5PvKR8FXmJv4Mn6Cnip5nyNa2KQknTolWhWzbiiQ1sxlH2rm30uADZBUUnJbvI6jCIG0FJPFkZJ6RGGTh2mYXvYHdsWnilXHiFVDVZZBKKaOKUvIJe5gy5tP5Q3y2LlafFZ44wZA2Rlw27bXv3KzHjMUujYpGkbdR8Fm9z4PrtLn6VDLHND6ZJVya9TVPdDzLXBkTdXlDE7GZo6bq3271mS4iwssI32dtUPrAbmOso2ndLqWnU7U1RpmQNNyOdee2wH7qJdJL62SzRuaLeSzjiDRuPgpsrBI1xDJHZTYhrbkeF0bSf+jp5PiVnRYZDg0UbJ8Uq3uLtW01OzM8/jJ0b3alLE8bnjkbHycpaOkiy35+RvOza9rhZp7h4rCixzCIy5k1LXucARbM1tih/7Q0NhkopXfilAPuVq12PJzajT5pfdyuvRcL8GjRVNacUpq/GZnYlzDswjlebHgL7hfWw4I2KYjVYrWyVlfM6WV9gR7AA2AN2ABYxx+J7gBRlvbmuVKWd8lnZuieCUnJ8M30UenQe7DG5ItVFSxgyvnZAza+VwJyjuGpPYsyCHDa1s0nplY0R6OllaMmwnQDXd796hM2GuElM55FQLOblF3W7Bv7Rt4X2K9XMjNNWRB0Ye14aWRhw0bzeouBuJPctIRSVnkdV1s9Rn2p/SuCmefoJDnIe0i7H3uCNx7e9QfWVExNnEDsRaJlRPgc8Mscg9HeDGXNIGV2hA/MB+pJrGwhsds8ttg+J4KZJLkrT6vNLGsabKropJOs73ockLIh03gHhdabaQv1lkDG8GqwKOjdGWc0ZO7alZ3x6dmlHdNpe5gxMFVIIocuY7MxtdFqcDrWOjc1okL3BhDLm1+Ois1GBfaZoXuiaNTzm0K06r5iEUxnkqndvRA8RqnZyLDjlCWPKuezT4KUUDYJjGXiV8IymRuwns7tngrVUxtZhLcPa1rZow2pDiesXm2v5Sz9XmOVrIqeVzWBtmEkDuWm7DHRQzzTGNvpdNFHTG/SPQaCR47e7tTj52YdQh4WOGJ+5TqWl1FMyNv2eHujia7iHBzXD9TR7+K56oa9z7tY4i24LqmGhkwnEoooy2QSRxySEkNJEh1AJOpsT8hvz2vpw0AufpporfnZ56n9rb+5z5jfb1b/0lNzb/uO8l0P/AA52GX3fulan4zeQ/dMyo5/KllG9GydikI+xSMBlHBSazM4AXuTYXVgRojIderfxsgZCSkc1j2hpJbaxttCD9vTzNzsktexa9pCvS1MEbCyd80jgLNDZLhqLBymqIYzEZqzmz7JnzjychIrJKPG0G8yRkukgla13VcWENvx1Tc6y5AcNNquw8ooube36xxCnL9HBtLFIHDts5vzVeoxGGQDLipeBsz0zmn3OKdGVmbPVyCRzYrgN3kJ8PxCSmqmyvJLT0XgDUhOTSl5camF1zdwySC628P5RUNAQ6mwqiDwLZ8xuR4g/FJ+xvgrdblVDVWCzPpy+lqXSNf8AaZHaZv7rBDpGPyy5gWnUHSy7FvLSI3JooGfhcD+yp1nKLD6uTnJsOgkcdpcAT8Vmt/dHoahaSdSxypmHSRuncWRBuuty790emms1zNttncjvxKFzr0tBDHpa7C7Z4OVR0jzqI2NZtLWtACbtmeCSwz3qROGjl+uoZKmnkdEC2WwNszdwB4k2C15XSwiOapEJZTRSSQyUjyHkl1nMLr62zNJNtx23uqlHWjEcNdSMnihrWHLE6V2USRm/QzbnC5sTuJCJR0OLNkdDiNGYomw81zrwGhoAI6Tt+hI8lovI86buTZZweetq6OqlqMhgtGGDMXEuLr6kknYDoT4KEraOju6WTK92pAdckrNq8Sbh1LHQ4dIJWscXvkI67yLZu61rLIhr6iCUywylsh2usCfelJWb6fOsTvub78Rf/wBJQyPH3nsc4IL8dr4+haGPuAVCOHGMWfaNlZU+BIHyCux8jsbktngji7JZWgqdptl1s592T9O9L9fURxR725tUJ8tAw+vvbgtGn5BVjml1TW08dt0Yzn5KyORuHteGOqql8m8Wa0FOkJazIlwjDqsTp3Ur44y5z3DKNLCyv0DpcUbhhjnj52gkbmileGZmZr3BOmmtx2jbrbXZyMomEZoZnjfmedPJGHJagjdmjpHWG/nnf1KlwZZ82TPLdMxMREdOPRWSxucZXTTOa67S47ADvsL+JcgRxuk0izPPBgJXRwxUeHn7KihzDfI3MfNWvr54GXJCBwa0hBklRz0OFVsmnNOaDvebI31FWcYv1hbH14D1oneBUPr6L+E/yCRRxgaOCK1o+7dOAFMFo3oFQ7GNPsqzHE0jUEf53KtmG4qTHm+hv4pBRd+pqSoIdNG659ppspf7K0UmjDMCdnSQI5JN8hRfTZIzZryEBtEORAdfLUSM/Gz+yccgJpD0a1rT/MxFGLz2AdI4hGhx6SHq2CLDYiMX0X10o6OIQX7WFEP0TYu4gRVtK78TXj4Ao7OVc7SMtvJaVNyrrXkAPIS3FxwObpGT/uhxkC5rqEf6n9KQ+iPFd+I0I8JP6V0Z5SVwBLp3DsLUE8qKwuy57pKZrLRTj5oxB9EWKf8AdKMdzZP2VqP6J8QPQnx6Fg4CJx+JC0DyhqydXE/53qtJykqD7Tj4p7xLSTFB9E9FCL1OMyvPGKJrfiSjx/RtgUdhNXYhKxvVbdot7lky8p6hpNnW8UF/KOZ8YLnEa7cyd2YvGl5nSM5F8kqYXfSTTEagzTO+AIVqOnwGi6VJQUsR/ljFz7yuMdjD3NzEtP4lBuJMeLuYy/ck2VGCZ3EmK0waGtJAG4aLNnxOmzEi9+1c22tg9qJh8EjVUp208fvSs02UbEuMMb1XFvzVJ2Lxc5qL+GxZTn0jtTD/AOx/dRDKMj1Q/U790xVRpz4w17LMaRbsCznYlqbAg3SEVGR6k+D3fum5mhJ9U8f+UpoiSBSVr3DaNu0hDFU77w8ldbS0JGkcn+qVE0NN7Of80iZLKRlzaZhqoWHFvkr/AKBT3P2jh+e/yT+gU/8AFPmP2TIM7L2jzTFnaFMbU9hwUlEMnd5p26HamPW8URoF9iQBGO/wlKQX4eaePrWTuA10RZaAEcXBRs1x6yIdqdoHAJFpDNZ4LSoHtEgzX8rqhuR4OsEmdWGbg+DZml25QA07DdU+eLZL3afFJ7RlGg8lXcBm2BJI6suoySVNl4VF9w81Wkc03uQCotAvsCjOLNfbRKXkZQzSTM+ojJcSHDwKC5p5sNuNDfaiyak3Vd+xVFnFl5djjRlswv3p2utvHmmAGTYmAHBNkrgO11t480z33H90MAcErDgECc2QLjfanaTuKg7Q6JgqJtsIS8b+9Sa1xN7jzQtynB6tvchEtlpuYN2+9ONdpPmhHqhDub7UxMt3b2prjgVWfo1CzHiUyT//2Q=="> 
-	</body>
+  <body>
+    <div class="container">
+      <!-- HEADER stays consistent across webpages -->
+      <header class="main-header">
+        <div class="name"><a href="index.html">A. Pauls</a></div>
+        <div class="tag-line">
+          teaching the tools so this generation can change next
+        </div>
+        <nav>
+          <a href="mywork1.html">My Work</a>
+          <a href="sample_resume.pdf">Resume</a>
+          <a href="www.therural.ca">My School</a>
+          <a href="#contact-me">Contact Me</a>
+        </nav>
+      </header>
+      <!-- end of HEADER -->
+      <!-- Main Content changes for each page -->
+      <main class="main-content">
+        <!--About me section-->
+        <aside class="about-me">
+          <img
+            class="img-profile"
+            src="img/pic_profile.png"
+            alt="Picture of Amazing Teacher"
+          />
+          <div class="about-paragraph">
+            Knowledgable about many areas of computer programming and design.
+            Able to code in Python, Arduino, HTML, CSS and JavaScript.
+          </div>
+        </aside>
+        <!-- end of About me Section -->
+        <!-- First project to showcase -->
+        <article class="showcase showcase-1">
+          <h3 class="showcase-title">Python</h3>
+          <h4 class="showcase-subhead">Text Based Adventure</h4>
+          <img
+            class="img-showcase"
+            src="img/pic_pythonAdventure.JPG"
+            alt="img of text adventure or embed from repl"
+          />
+          <p class="showcase-descript">
+            Take on the role of a cave explorer and discover the secrets of the
+            dragon's lair.
+          </p>
+          <a class="showcase-link" href="mywork1.html"> Find out more</a>
+        </article>
+        <!-- end of First Project -->
+        <!-- second Project -->
+        <article class="showcase showcase-2">
+          <h3 class="showcase-title">Arduino</h3>
+          <h4 class="showcase-subhead">Elastic Band Launcher</h4>
+          <img
+            class="img-showcase"
+            src="img/pic_elasticBand.jpg"
+            alt="img of elastic band launcher"
+          />
+          <p class="showcase-descript">
+            Using a servo and a button, build a launcher that excels at both
+            range and accuracy.
+          </p>
+          <a class="showcase-link" href="mywork1.html"> Find out more</a>
+        </article>
+        <!-- end of second Project -->
+        <!-- third Project -->
+        <article class="showcase showcase-3">
+          <h3 class="showcase-title">Other</h3>
+          <h4 class="showcase-subhead">Really Cool Project</h4>
+          <img
+            class="img-showcase"
+            src="img/pic_arduinolights.JPG"
+            alt="img of elastic band launcher"
+          />
+          <p class="showcase-descript">Put another description here.</p>
+          <a class="showcase-link" href="mywork1.html"> Find out more</a>
+        </article>
+        <!-- end of third Project -->
+      </main>
+      <!-- End of Main Content -->
+      <!-- footer remains consistent across webpages-->
+      <footer class="footer">
+        <address id="contact-me">
+          <p class="mail-link">
+            <a href="mailto:ajpauls@edu.pe.ca">Contact me</a>
+          </p>
+          <div class="social-media">
+            <p>Facebook</p>
+            <p>Twitter</p>
+            <p>Other</p>
+          </div>
+        </address>
+        <div class="website-info">
+          <p class="web-author">Website built entirely by A. Pauls</p>
+          <p class="web-recent">Last updated March 2022</p>
+        </div>
+      </footer>
+      <!-- end of FOOTER -->
+    </div>
+  </body>
 </html>

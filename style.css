@@ -1,7 +1,189 @@
-html, body {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-canvas {
-  display: block;
+
+/* PAGE SECTIONS */
+body {
+  font-family: sans-serif;
+  font-size: 18px; /* may remove this later*/
+  position: relative;
 }
+
+.container {
+  width: 1200px;
+  /* width: 90%; need to work on mobile views */
+  margin: 0 auto;
+}
+
+/* HEADER */
+.main-header {
+  border-top: 10px solid goldenrod;
+  background-color: lightgoldenrodyellow;
+  padding: 20px 40px;
+  border-bottom: 10px solid goldenrod;
+
+  /*flex container */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.name {
+  padding: 15px;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 28px;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.name a {
+  text-decoration: none;
+  color: black;
+}
+
+.tag-line {
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  flex-grow: 3;
+}
+
+nav {
+  padding: 20px;
+  flex: 0, 1, auto;
+}
+nav a:link {
+  margin-right: 20px;
+}
+
+/* nav links LHVA */
+
+/* end of HEADER */
+
+/* MAIN CONTENT */
+.main-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  /*flexbox container*/
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  /*justify-content: left;*/
+  /*gap: 10px;*/
+}
+
+/* about me aside */
+.about-me {
+  background-color: lightgoldenrodyellow;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 250px;
+
+  border-radius: 5%;
+  border: 5px solid goldenrod;
+  flex: 0, 0, auto; /* no shrink or grow */
+  text-align: center;
+  align-self: stretch;
+}
+
+.img-profile {
+  padding: 10px;
+}
+/* end of about me */
+
+/* showcase */
+.showcase {
+  width: 400px;
+  /*height: 600px;*/
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+
+  flex: 0, 0, auto;
+  border: 5px solid darkgoldenrod;
+  border-radius: 5%;
+  align-self: stretch;
+}
+
+.showcase:last-child {
+  margin-right: 20px;
+}
+
+.showcase-title,
+.showcase-subhead {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.img-showcase {
+  width: 350px;
+  height: 350px;
+  /*object-fit: scale-down;*/
+  object-fit: cover;
+}
+
+.showcase-descript {
+  font-style: italic;
+}
+/*end of showcase*/
+/* end of main content */
+
+/* footer styles  */
+.footer {
+  width: 100%;
+  margin: 0 auto; /*center left-right*/
+  background-color: goldenrod;
+  padding: 20px;
+}
+
+#contact-me {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /*flex container */
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+}
+.mail-link {
+  display: inline-block;
+  font-weight: bold;
+}
+.social-media {
+  font-style: italic;
+  /*flex item inside contact me*/
+  flex-basis: 300px;
+
+  /*flex container*/
+  display: flex;
+  justify-content: space-between;
+}
+
+.website-info {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  /*flex container*/
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.web-author {
+  font-weight: bold;
+}
+.web-recent {
+  font-style: italic;
+}
+/* end of Footer */
