@@ -1,0 +1,16 @@
+.picture {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  background-image: url("imgs/walrus.jpg");
+  background-size: cover;
+  background-color: yellow;
+  height: 400px;
+  width: 600px;
+}
+
+.tile {
+  background-color: whitesmoke;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+}
