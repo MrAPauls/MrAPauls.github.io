@@ -1,0 +1,1922 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro to HTML — 5-Day Unit Plan</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Code+Pro:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1a1a2e;
+        --paper: #faf8f4;
+        --accent: #c0392b;
+        --accent2: #2980b9;
+        --accent3: #27ae60;
+        --accent4: #8e44ad;
+        --accent5: #e67e22;
+        --rule: #d4cfc7;
+        --code-bg: #1a1a2e;
+        --code-text: #a8d8ea;
+        --tag-color: #f39c12;
+        --attr-color: #27ae60;
+        --val-color: #e74c3c;
+        --muted: #6b6460;
+        --highlight: #fff3cd;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      /* ── COVER ── */
+      .cover {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: var(--ink);
+        color: #fff;
+        padding: 80px 60px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cover::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            rgba(255, 255, 255, 0.04) 39px,
+            rgba(255, 255, 255, 0.04) 40px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 39px,
+            rgba(255, 255, 255, 0.04) 39px,
+            rgba(255, 255, 255, 0.04) 40px
+          );
+      }
+
+      .cover-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+      }
+
+      .cover-label {
+        font-family: "Source Code Pro", monospace;
+        font-size: 13px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 24px;
+      }
+
+      .cover h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(48px, 8vw, 96px);
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 32px;
+      }
+
+      .cover h1 span {
+        color: var(--accent);
+      }
+
+      .cover-sub {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.65);
+        font-weight: 300;
+        max-width: 560px;
+        margin-bottom: 60px;
+        line-height: 1.6;
+      }
+
+      .cover-meta {
+        display: flex;
+        gap: 48px;
+        flex-wrap: wrap;
+      }
+
+      /* .meta-item { } */
+      .meta-label {
+        font-family: "Source Code Pro", monospace;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 4px;
+      }
+      .meta-value {
+        font-size: 18px;
+        font-weight: 500;
+        color: #fff;
+      }
+
+      .day-strip {
+        display: flex;
+        gap: 0;
+        margin-top: 80px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 40px;
+      }
+
+      .day-pill {
+        flex: 1;
+        padding: 16px 8px;
+        text-align: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 12px;
+        font-family: "Source Code Pro", monospace;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        transition: color 0.2s;
+      }
+      .day-pill:last-child {
+        border-right: none;
+      }
+      .day-pill strong {
+        display: block;
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.15);
+      }
+
+      /* ── LAYOUT ── */
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      /* ── DAY SECTIONS ── */
+      .day-section {
+        padding: 80px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .day-header {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 32px;
+        align-items: start;
+        margin-bottom: 56px;
+      }
+
+      .day-number {
+        font-family: "Playfair Display", serif;
+        font-size: 100px;
+        font-weight: 900;
+        line-height: 0.85;
+        color: var(--rule);
+        user-select: none;
+      }
+
+      .day-title-block {
+        padding-top: 8px;
+      }
+
+      .day-label {
+        font-family: "Source Code Pro", monospace;
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .day-title {
+        font-family: "Playfair Display", serif;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+
+      .day-summary {
+        color: var(--muted);
+        font-size: 15px;
+        max-width: 620px;
+      }
+
+      /* ── SECTION BLOCKS ── */
+      .lesson-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-bottom: 32px;
+      }
+
+      @media (max-width: 680px) {
+        .lesson-grid {
+          grid-template-columns: 1fr;
+        }
+        .day-header {
+          grid-template-columns: 1fr;
+        }
+        .day-number {
+          font-size: 64px;
+        }
+      }
+
+      .block {
+        background: #fff;
+        border: 1px solid var(--rule);
+        border-radius: 4px;
+        padding: 28px;
+      }
+
+      .block.full {
+        grid-column: 1 / -1;
+      }
+
+      .block-label {
+        font-family: "Source Code Pro", monospace;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .block h4 {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 18px;
+        color: var(--ink);
+      }
+      .block h4:first-of-type {
+        margin-top: 0;
+      }
+
+      .block p {
+        color: #444;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 8px;
+      }
+
+      .block ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .block ul li {
+        font-size: 14px;
+        color: #444;
+        padding: 5px 0 5px 20px;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .block ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--rule);
+        font-size: 12px;
+        top: 6px;
+      }
+
+      /* ── CODE BLOCKS ── */
+      .code-block {
+        background: var(--code-bg);
+        border-radius: 6px;
+        padding: 24px;
+        margin: 16px 0;
+        overflow-x: auto;
+        position: relative;
+      }
+
+      .code-block::before {
+        content: attr(data-label);
+        display: block;
+        font-family: "Source Code Pro", monospace;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+        margin-bottom: 14px;
+      }
+
+      .code-block pre {
+        font-family: "Source Code Pro", monospace;
+        font-size: 13px;
+        line-height: 1.7;
+        color: #cdd3de;
+        white-space: pre;
+      }
+
+      .t {
+        color: var(--tag-color);
+      } /* tag */
+      .a {
+        color: var(--attr-color);
+      } /* attribute */
+      .v {
+        color: var(--val-color);
+      } /* value */
+      .c {
+        color: #7f8c8d;
+        font-style: italic;
+      } /* comment */
+      .s {
+        color: #a8d8ea;
+      } /* string/text */
+
+      /* ── TIMING BAR ── */
+      .timing-bar {
+        display: flex;
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 8px;
+        gap: 2px;
+      }
+
+      .timing-segment {
+        height: 100%;
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+
+      .timing-legend {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* ── ACTIVITY CARDS ── */
+      .activity {
+        border-left: 3px solid var(--rule);
+        padding: 12px 16px;
+        margin: 10px 0;
+        background: var(--paper);
+        font-size: 14px;
+        border-radius: 0 4px 4px 0;
+      }
+
+      .activity-type {
+        font-family: "Source Code Pro", monospace;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+        font-weight: 600;
+      }
+
+      /* ── OBJECTIVES ── */
+      .objective-list {
+        counter-reset: obj;
+        list-style: none;
+        padding: 0;
+      }
+
+      .objective-list li {
+        counter-increment: obj;
+        font-size: 14px;
+        color: #444;
+        padding: 8px 0 8px 40px;
+        position: relative;
+        border-bottom: 1px solid #f0ede8;
+        line-height: 1.5;
+      }
+      .objective-list li:last-child {
+        border-bottom: none;
+      }
+
+      .objective-list li::before {
+        content: counter(obj, decimal-leading-zero);
+        position: absolute;
+        left: 0;
+        font-family: "Source Code Pro", monospace;
+        font-size: 11px;
+        font-weight: 600;
+        top: 9px;
+        color: var(--rule);
+      }
+
+      /* ── VOCAB CARDS ── */
+      .vocab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .vocab-card {
+        background: var(--paper);
+        border: 1px solid var(--rule);
+        border-radius: 4px;
+        padding: 12px 14px;
+      }
+
+      .vocab-term {
+        font-family: "Source Code Pro", monospace;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 4px;
+      }
+
+      .vocab-def {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      /* ── ASSESSMENT ── */
+      .assessment-block {
+        background: linear-gradient(135deg, #fff 0%, var(--paper) 100%);
+        border: 2px solid var(--ink);
+        border-radius: 4px;
+        padding: 32px;
+        margin-top: 32px;
+      }
+
+      .assessment-block .block-label {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+
+      /* ── DAY ACCENT COLORS ── */
+      .d1 .day-label,
+      .d1 .block-label {
+        color: var(--accent);
+      }
+      .d1 .day-number {
+        color: rgba(192, 57, 43, 0.12);
+      }
+      .d1 .block-label {
+        border-color: rgba(192, 57, 43, 0.2);
+      }
+      .d1 .activity {
+        border-left-color: var(--accent);
+      }
+      .d1 .objective-list li::before {
+        color: var(--accent);
+      }
+
+      .d2 .day-label,
+      .d2 .block-label {
+        color: var(--accent2);
+      }
+      .d2 .day-number {
+        color: rgba(41, 128, 185, 0.12);
+      }
+      .d2 .block-label {
+        border-color: rgba(41, 128, 185, 0.2);
+      }
+      .d2 .activity {
+        border-left-color: var(--accent2);
+      }
+      .d2 .objective-list li::before {
+        color: var(--accent2);
+      }
+
+      .d3 .day-label,
+      .d3 .block-label {
+        color: var(--accent3);
+      }
+      .d3 .day-number {
+        color: rgba(39, 174, 96, 0.12);
+      }
+      .d3 .block-label {
+        border-color: rgba(39, 174, 96, 0.2);
+      }
+      .d3 .activity {
+        border-left-color: var(--accent3);
+      }
+      .d3 .objective-list li::before {
+        color: var(--accent3);
+      }
+
+      .d4 .day-label,
+      .d4 .block-label {
+        color: var(--accent4);
+      }
+      .d4 .day-number {
+        color: rgba(142, 68, 173, 0.12);
+      }
+      .d4 .block-label {
+        border-color: rgba(142, 68, 173, 0.2);
+      }
+      .d4 .activity {
+        border-left-color: var(--accent4);
+      }
+      .d4 .objective-list li::before {
+        color: var(--accent4);
+      }
+
+      .d5 .day-label,
+      .d5 .block-label {
+        color: var(--accent5);
+      }
+      .d5 .day-number {
+        color: rgba(230, 126, 34, 0.12);
+      }
+      .d5 .block-label {
+        border-color: rgba(230, 126, 34, 0.2);
+      }
+      .d5 .activity {
+        border-left-color: var(--accent5);
+      }
+      .d5 .objective-list li::before {
+        color: var(--accent5);
+      }
+
+      /* ── TEACHER TIPS ── */
+      .tip-box {
+        background: var(--highlight);
+        border: 1px solid #e6d48a;
+        border-radius: 4px;
+        padding: 16px 20px;
+        margin: 16px 0;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .tip-box strong {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: "Source Code Pro", monospace;
+        margin-bottom: 6px;
+        color: #856404;
+      }
+
+      /* ── PRINT ── */
+      @media print {
+        .cover {
+          min-height: auto;
+          padding: 60px 40px;
+          page-break-after: always;
+        }
+        .day-section {
+          page-break-before: always;
+        }
+        body {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════════════ COVER ══════════════════════ -->
+    <div class="cover">
+      <div class="cover-inner">
+        <div class="cover-label">// Grade 12 Computer Science</div>
+        <h1>Intro to<br /><span>&lt;HTML&gt;</span></h1>
+        <p class="cover-sub">
+          A five-day unit plan covering the fundamentals of web markup — from
+          document structure to forms — preparing students for CSS.
+        </p>
+        <div class="cover-meta">
+          <div class="meta-item">
+            <div class="meta-label">Duration</div>
+            <div class="meta-value">5 Days</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Level</div>
+            <div class="meta-value">Grade 12</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Prerequisites</div>
+            <div class="meta-value">None</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Next Unit</div>
+            <div class="meta-value">Intro to CSS</div>
+          </div>
+        </div>
+        <div class="day-strip">
+          <div class="day-pill"><strong>01</strong>Web Foundations</div>
+          <div class="day-pill"><strong>02</strong>Text &amp; Semantics</div>
+          <div class="day-pill"><strong>03</strong>Links &amp; Media</div>
+          <div class="day-pill"><strong>04</strong>Lists &amp; Tables</div>
+          <div class="day-pill"><strong>05</strong>Forms &amp; Project</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ DAY 1 ══════════════════════ -->
+    <div class="day-section d1">
+      <div class="container">
+        <div class="day-header">
+          <div class="day-number">01</div>
+          <div class="day-title-block">
+            <div class="day-label">Day One</div>
+            <div class="day-title">
+              Web Foundations &amp;<br />Document Structure
+            </div>
+            <p class="day-summary">
+              Students learn what HTML is, how browsers interpret markup, and
+              how to write their first valid HTML document from scratch.
+            </p>
+          </div>
+        </div>
+
+        <div class="lesson-grid">
+          <!-- Learning Objectives -->
+          <div class="block">
+            <div class="block-label">Learning Objectives</div>
+            <ol class="objective-list">
+              <li>
+                Explain what HTML is and its role in the web stack (HTML, CSS,
+                JS)
+              </li>
+              <li>
+                Describe how a browser parses and renders an HTML document
+              </li>
+              <li>
+                Identify the anatomy of an HTML element: opening tag, content,
+                closing tag
+              </li>
+              <li>Distinguish between elements, tags, and attributes</li>
+              <li>Write a syntactically valid HTML5 document from memory</li>
+              <li>Use a code editor and preview a page in a browser</li>
+            </ol>
+          </div>
+
+          <!-- Schedule -->
+          <div class="block">
+            <div class="block-label">Lesson Schedule (75 min)</div>
+
+            <div class="timing-legend">
+              <div class="legend-item">
+                <div class="legend-dot" style="background: #c0392b"></div>
+                Instruction
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background: #e74c3c"></div>
+                Discussion
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background: #fadbd8"></div>
+                Hands-on
+              </div>
+            </div>
+
+            <div class="activity">
+              <div class="activity-type" style="color: #c0392b">
+                Warm-Up — 5 min
+              </div>
+              Ask students: "What actually happens when you type a URL and press
+              Enter?" Collect 4–5 responses on the board. Don't correct yet —
+              revisit at the end.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #c0392b">
+                Instruction — 20 min
+              </div>
+              Introduce HTML as a markup language. Distinguish markup from
+              programming. Show the browser developer tools "Elements" tab on a
+              real website. Explain the request/response cycle at a high level.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #c0392b">
+                Instruction — 15 min
+              </div>
+              Anatomy of HTML: elements, tags, attributes. Show tag = opening +
+              closing. Introduce self-closing tags. Walk through the HTML5
+              boilerplate live on the projector: doctype,
+              <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>,
+              <code>&lt;meta charset&gt;</code>, <code>&lt;title&gt;</code>,
+              <code>&lt;body&gt;</code>.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #e74c3c">
+                Guided Practice — 25 min
+              </div>
+              Students open VS Code (or chosen editor). Instructor types the
+              boilerplate live; students follow along. Students add their name
+              in the title, write one heading, and one paragraph. Open in
+              browser — first page!
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #fadbd8">
+                Wrap-Up — 10 min
+              </div>
+              Return to warm-up responses. Correct misconceptions. Students
+              write an exit ticket: draw and label an HTML element from memory.
+            </div>
+          </div>
+
+          <!-- Key Concepts -->
+          <div class="block">
+            <div class="block-label">Key Concepts &amp; Vocabulary</div>
+            <div class="vocab-grid">
+              <div class="vocab-card">
+                <div class="vocab-term">HTML</div>
+                <div class="vocab-def">
+                  HyperText Markup Language — describes structure, not style
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;!DOCTYPE&gt;</div>
+                <div class="vocab-def">
+                  Declaration that tells the browser this is HTML5
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Element</div>
+                <div class="vocab-def">
+                  The full unit: opening tag + content + closing tag
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Tag</div>
+                <div class="vocab-def">
+                  The angle-bracket markers, e.g. <code>&lt;p&gt;</code>
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Attribute</div>
+                <div class="vocab-def">
+                  Extra info inside a tag: <code>name="value"</code>
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;head&gt;</div>
+                <div class="vocab-def">
+                  Metadata container — not displayed on the page
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;body&gt;</div>
+                <div class="vocab-def">
+                  Everything visible to the user lives here
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Nesting</div>
+                <div class="vocab-def">
+                  Placing elements inside other elements
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Code Example -->
+          <div class="block">
+            <div class="block-label">Reference Code</div>
+            <div class="code-block" data-label="HTML5 Boilerplate">
+              <pre><span class="c">&lt;!-- Every HTML file starts here --&gt;</span>
+<span class="t">&lt;!DOCTYPE</span> <span class="a">html</span><span class="t">&gt;</span>
+<span class="t">&lt;html</span> <span class="a">lang</span>=<span class="v">"en"</span><span class="t">&gt;</span>
+  <span class="t">&lt;head&gt;</span>
+    <span class="t">&lt;meta</span> <span class="a">charset</span>=<span class="v">"UTF-8"</span><span class="t">&gt;</span>
+    <span class="t">&lt;meta</span> <span class="a">name</span>=<span class="v">"viewport"</span>
+          <span class="a">content</span>=<span class="v">"width=device-width, initial-scale=1.0"</span><span class="t">&gt;</span>
+    <span class="t">&lt;title&gt;</span><span class="s">Page Title</span><span class="t">&lt;/title&gt;</span>
+  <span class="t">&lt;/head&gt;</span>
+  <span class="t">&lt;body&gt;</span>
+    <span class="c">&lt;!-- Visible content goes here --&gt;</span>
+    <span class="t">&lt;h1&gt;</span><span class="s">Hello, World!</span><span class="t">&lt;/h1&gt;</span>
+    <span class="t">&lt;p&gt;</span><span class="s">My first HTML page.</span><span class="t">&lt;/p&gt;</span>
+  <span class="t">&lt;/body&gt;</span>
+<span class="t">&lt;/html&gt;</span></pre>
+            </div>
+          </div>
+
+          <!-- Teacher Notes -->
+          <div class="block full">
+            <div class="block-label">Teacher Notes &amp; Differentiation</div>
+            <div class="tip-box">
+              <strong>💡 Teacher Tip</strong>
+              Use browser dev tools as your most powerful teaching prop.
+              Right-click any website → Inspect → show how every visible element
+              maps to HTML. Students are instantly hooked when they see real,
+              familiar sites deconstructed.
+            </div>
+            <h4>Common Misconceptions to Address</h4>
+            <ul>
+              <li>
+                "HTML is a programming language" — clarify it's a
+                markup/structure language; it describes content, not logic.
+              </li>
+              <li>
+                Forgetting to close tags — emphasize that most tags come in
+                pairs. Show how a missing <code>&lt;/body&gt;</code> can break
+                layout.
+              </li>
+              <li>
+                The doctype is a tag — it's a declaration, not an element. It
+                has no closing tag.
+              </li>
+            </ul>
+            <h4>Extension for Advanced Students</h4>
+            <ul>
+              <li>
+                Research the history of HTML versions (HTML 1.0 to HTML5). What
+                changed?
+              </li>
+              <li>
+                Use the W3C validator (validator.w3.org) to check their
+                boilerplate and interpret the output.
+              </li>
+            </ul>
+            <h4>Support for Struggling Students</h4>
+            <ul>
+              <li>
+                Provide a printed boilerplate template they can annotate by hand
+                before typing.
+              </li>
+              <li>
+                Pair them with a stronger student for the guided practice phase.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ DAY 2 ══════════════════════ -->
+    <div class="day-section d2">
+      <div class="container">
+        <div class="day-header">
+          <div class="day-number">02</div>
+          <div class="day-title-block">
+            <div class="day-label">Day Two</div>
+            <div class="day-title">
+              Text, Semantics &amp;<br />Block vs. Inline
+            </div>
+            <p class="day-summary">
+              Students learn to work with text content using the correct
+              semantic elements, and develop an understanding of the block vs.
+              inline display model that underpins CSS layout.
+            </p>
+          </div>
+        </div>
+
+        <div class="lesson-grid">
+          <div class="block">
+            <div class="block-label">Learning Objectives</div>
+            <ol class="objective-list">
+              <li>
+                Use heading elements <code>&lt;h1&gt;</code>–<code
+                  >&lt;h6&gt;</code
+                >
+                with correct hierarchy
+              </li>
+              <li>Write paragraphs, line breaks, and horizontal rules</li>
+              <li>
+                Apply inline text elements: <code>&lt;strong&gt;</code>,
+                <code>&lt;em&gt;</code>, <code>&lt;span&gt;</code>,
+                <code>&lt;mark&gt;</code>, <code>&lt;code&gt;</code>
+              </li>
+              <li>
+                Explain semantic HTML: choosing elements based on meaning, not
+                appearance
+              </li>
+              <li>
+                Distinguish block elements from inline elements and predict
+                their behavior
+              </li>
+              <li>Use HTML comments to annotate code</li>
+            </ol>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Lesson Schedule (75 min)</div>
+            <div class="activity">
+              <div class="activity-type" style="color: #2980b9">
+                Warm-Up — 5 min
+              </div>
+              Show two HTML snippets: one using
+              <code>&lt;b&gt;</code> everywhere, one using
+              <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, and
+              headings. Ask: "Which is better? Why might the second matter to a
+              screen reader?"
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #2980b9">
+                Instruction — 20 min
+              </div>
+              Walk through headings (H1–H6) as a document outline, not a size
+              selector. Introduce paragraphs and <code>&lt;br&gt;</code>. Cover
+              the semantic principle: HTML = meaning, CSS = appearance. Show a
+              screen reader demo (NVDA or VoiceOver) on a well-structured vs.
+              poorly structured page.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #2980b9">
+                Instruction — 15 min
+              </div>
+              Inline text elements: <code>&lt;strong&gt;</code> (importance) vs
+              <code>&lt;b&gt;</code> (visual bold),
+              <code>&lt;em&gt;</code> (stress emphasis) vs
+              <code>&lt;i&gt;</code> (italic style). Introduce
+              <code>&lt;span&gt;</code> as the generic inline container,
+              <code>&lt;mark&gt;</code> for highlighted text,
+              <code>&lt;code&gt;</code> for inline code snippets. Block vs.
+              inline: block elements stack vertically and take full width;
+              inline elements flow within text.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #aed6f1">
+                Guided Practice — 25 min
+              </div>
+              Students recreate a formatted article about a topic of their
+              choice. Requirements: one H1, two H2s, at least three paragraphs,
+              one use each of <code>&lt;strong&gt;</code>,
+              <code>&lt;em&gt;</code>, and <code>&lt;mark&gt;</code>.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #aed6f1">
+                Wrap-Up — 10 min
+              </div>
+              Pair discussion: "Could a search engine understand your page
+              better because of how you used headings?" Collect exit ticket:
+              name one block element and one inline element with a sentence
+              explaining the difference.
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Key Concepts &amp; Vocabulary</div>
+            <div class="vocab-grid">
+              <div class="vocab-card">
+                <div class="vocab-term">Semantic HTML</div>
+                <div class="vocab-def">
+                  Using elements that describe meaning, not just visual style
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Block element</div>
+                <div class="vocab-def">
+                  Starts on a new line, stretches full width:
+                  <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Inline element</div>
+                <div class="vocab-def">
+                  Flows within text: <code>&lt;strong&gt;</code>,
+                  <code>&lt;em&gt;</code>, <code>&lt;span&gt;</code>
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;strong&gt;</div>
+                <div class="vocab-def">
+                  Semantic importance — rendered bold, meaningful to screen
+                  readers
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;em&gt;</div>
+                <div class="vocab-def">
+                  Stress emphasis — rendered italic, meaningful to screen
+                  readers
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;span&gt;</div>
+                <div class="vocab-def">
+                  Generic inline container; no semantic meaning on its own
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Accessibility</div>
+                <div class="vocab-def">
+                  Designing so screen readers and assistive tools work correctly
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">HTML comment</div>
+                <div class="vocab-def">
+                  <code>&lt;!-- ... --&gt;</code> — ignored by browser, useful
+                  for notes
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Reference Code</div>
+            <div class="code-block" data-label="Text & Semantic Elements">
+              <pre><span class="t">&lt;h1&gt;</span><span class="s">Article Title (H1 — only one per page)</span><span class="t">&lt;/h1&gt;</span>
+<span class="t">&lt;h2&gt;</span><span class="s">Section Heading</span><span class="t">&lt;/h2&gt;</span>
+
+<span class="t">&lt;p&gt;</span><span class="s">A regular paragraph of text. HTML won't
+  respect your line breaks — use </span><span class="t">&lt;br&gt;</span><span class="s"> for that.</span><span class="t">&lt;/p&gt;</span>
+
+<span class="t">&lt;p&gt;</span>
+  This is <span class="t">&lt;strong&gt;</span><span class="s">important</span><span class="t">&lt;/strong&gt;</span> and
+  this is <span class="t">&lt;em&gt;</span><span class="s">emphasized</span><span class="t">&lt;/em&gt;</span> text.
+  You can also <span class="t">&lt;mark&gt;</span><span class="s">highlight</span><span class="t">&lt;/mark&gt;</span> text,
+  or show <span class="t">&lt;code&gt;</span><span class="s">inline code</span><span class="t">&lt;/code&gt;</span>.
+<span class="t">&lt;/p&gt;</span>
+
+<span class="c">&lt;!-- span has no default meaning - style with CSS later --&gt;</span>
+<span class="t">&lt;p&gt;</span><span class="s">Price: </span><span class="t">&lt;span&gt;</span><span class="s">$9.99</span><span class="t">&lt;/span&gt;&lt;/p&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="block full">
+            <div class="block-label">Teacher Notes &amp; Differentiation</div>
+            <div class="tip-box">
+              <strong>💡 Teacher Tip</strong>
+              The block vs. inline distinction is one of the most important
+              conceptual foundations for CSS layout. Spending 5 extra minutes
+              here with a visual diagram (draw boxes stacking vs. words flowing
+              inline) will save significant confusion in the CSS unit. Return to
+              this concept every time you introduce a new element.
+            </div>
+            <h4>Semantic HTML — Why It Matters (talking points)</h4>
+            <ul>
+              <li>
+                <strong>Accessibility:</strong> Screen readers use heading
+                hierarchy to help visually impaired users navigate a page. Using
+                H3 because "it looks like the right size" is harmful.
+              </li>
+              <li>
+                <strong>SEO:</strong> Search engines weight H1 content more
+                heavily. A well-structured page ranks better.
+              </li>
+              <li>
+                <strong>Maintainability:</strong> Semantic code is easier to
+                read and style. When CSS says "style all h2 elements," it only
+                works if H2s are actually H2s.
+              </li>
+            </ul>
+            <h4>Common Errors to Watch For</h4>
+            <ul>
+              <li>
+                Skipping heading levels (jumping from H1 to H4) — treat headings
+                like an outline, not a size tool.
+              </li>
+              <li>
+                Using <code>&lt;br&gt;</code> to add spacing between paragraphs
+                — this should be done with CSS margin later.
+              </li>
+              <li>
+                Nesting a block element inside an inline element (e.g.,
+                <code>&lt;span&gt;&lt;p&gt;...&lt;/p&gt;&lt;/span&gt;</code>) —
+                invalid HTML.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ DAY 3 ══════════════════════ -->
+    <div class="day-section d3">
+      <div class="container">
+        <div class="day-header">
+          <div class="day-number">03</div>
+          <div class="day-title-block">
+            <div class="day-label">Day Three</div>
+            <div class="day-title">Links, Images<br />&amp; Media</div>
+            <p class="day-summary">
+              Students learn to connect pages with hyperlinks, embed images with
+              accessible alt text, and get a first look at audio and video
+              elements — the features that make the web truly "hyper."
+            </p>
+          </div>
+        </div>
+
+        <div class="lesson-grid">
+          <div class="block">
+            <div class="block-label">Learning Objectives</div>
+            <ol class="objective-list">
+              <li>
+                Create hyperlinks using <code>&lt;a href&gt;</code> and explain
+                what href stands for
+              </li>
+              <li>Distinguish absolute URLs from relative file paths</li>
+              <li>
+                Use <code>target="_blank"</code> and explain its security
+                implications
+              </li>
+              <li>Embed images using <code>&lt;img src alt&gt;</code></li>
+              <li>
+                Write meaningful alt text that describes an image's purpose
+              </li>
+              <li>
+                Organize project files in a folder structure (assets/images)
+              </li>
+              <li>Embed a video or audio element with basic controls</li>
+            </ol>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Lesson Schedule (75 min)</div>
+            <div class="activity">
+              <div class="activity-type" style="color: #27ae60">
+                Warm-Up — 5 min
+              </div>
+              Show the class a webpage with a broken image icon and an empty
+              <code>alt</code> attribute. Ask: "Who is affected when this image
+              fails to load? Who else might always see this?"
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #27ae60">
+                Instruction — 20 min
+              </div>
+              Hyperlinks: anatomy of <code>&lt;a href="..."&gt;</code>. Absolute
+              vs. relative paths with a folder diagram on the board. Demo:
+              linking to Google (absolute), then to another local HTML file
+              (relative). Introduce <code>target="_blank"</code> — and the
+              <code>rel="noopener noreferrer"</code> security convention.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #27ae60">
+                Instruction — 15 min
+              </div>
+              Images: <code>&lt;img&gt;</code> is a self-closing (void) element.
+              The <code>src</code> and <code>alt</code> attributes. How to write
+              good alt text: describe function, not just appearance. Decorative
+              images use <code>alt=""</code>. Brief intro to
+              <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> with
+              <code>controls</code> attribute.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #a9dfbf">
+                Guided Practice — 25 min
+              </div>
+              Students set up a two-page mini-site: <code>index.html</code> and
+              <code>about.html</code>, with an images/ subfolder. They link the
+              pages to each other, add a navigation link to an external site,
+              and embed at least two images with proper alt text.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #a9dfbf">
+                Wrap-Up — 10 min
+              </div>
+              Peer review: swap computers. Partner checks that images have alt
+              text and links work. Discuss: "What makes a bad alt text?" Exit
+              ticket: write alt text for a photo of a dog jumping to catch a
+              frisbee in a park.
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Key Concepts &amp; Vocabulary</div>
+            <div class="vocab-grid">
+              <div class="vocab-card">
+                <div class="vocab-term">Hyperlink</div>
+                <div class="vocab-def">
+                  A clickable reference to another resource or page
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">href</div>
+                <div class="vocab-def">
+                  Hypertext Reference — the URL the link points to
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Absolute URL</div>
+                <div class="vocab-def">
+                  Full web address: <code>https://example.com/page.html</code>
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Relative path</div>
+                <div class="vocab-def">
+                  Path relative to current file: <code>../images/dog.jpg</code>
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">Void element</div>
+                <div class="vocab-def">
+                  Self-closing tag with no children: <code>&lt;img&gt;</code>,
+                  <code>&lt;br&gt;</code>
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">alt attribute</div>
+                <div class="vocab-def">
+                  Alternative text for images — read by screen readers, shown if
+                  image fails
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">src</div>
+                <div class="vocab-def">
+                  Source — the file path or URL of a media resource
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">File structure</div>
+                <div class="vocab-def">
+                  Organizing HTML, CSS, and assets into logical folders
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Reference Code</div>
+            <div class="code-block" data-label="Links, Images & Media">
+              <pre><span class="c">&lt;!-- Absolute link (external site) --&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href</span>=<span class="v">"https://www.wikipedia.org"</span>
+   <span class="a">target</span>=<span class="v">"_blank"</span>
+   <span class="a">rel</span>=<span class="v">"noopener noreferrer"</span><span class="t">&gt;</span>
+  <span class="s">Visit Wikipedia</span>
+<span class="t">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- Relative link (same project) --&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href</span>=<span class="v">"about.html"</span><span class="t">&gt;</span><span class="s">About Me</span><span class="t">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- Image with descriptive alt text --&gt;</span>
+<span class="t">&lt;img</span>
+  <span class="a">src</span>=<span class="v">"images/profile.jpg"</span>
+  <span class="a">alt</span>=<span class="v">"Student smiling at their laptop"</span>
+  <span class="a">width</span>=<span class="v">"300"</span><span class="t">&gt;</span>
+
+<span class="c">&lt;!-- Video with browser controls --&gt;</span>
+<span class="t">&lt;video</span> <span class="a">src</span>=<span class="v">"clip.mp4"</span> <span class="a">controls</span> <span class="a">width</span>=<span class="v">"640"</span><span class="t">&gt;</span>
+  <span class="s">Your browser doesn't support video.</span>
+<span class="t">&lt;/video&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="block full">
+            <div class="block-label">Teacher Notes &amp; Differentiation</div>
+            <div class="tip-box">
+              <strong>💡 Teacher Tip</strong>
+              The relative path lesson trips up many students. Draw the folder
+              structure on the board as a tree diagram, then walk through 2–3
+              path examples physically: "We're in index.html. To get to
+              images/logo.png, we go INTO the images folder." Use dot-dot-slash
+              notation visually as "going up" one level.
+            </div>
+            <h4>Suggested Folder Structure for Student Projects</h4>
+            <ul>
+              <li><code>my-website/</code> — Root folder</li>
+              <li><code>my-website/index.html</code> — Homepage</li>
+              <li><code>my-website/about.html</code> — Second page</li>
+              <li>
+                <code>my-website/images/</code> — All image files stored here
+              </li>
+            </ul>
+            <h4>Security Note on target="_blank"</h4>
+            <ul>
+              <li>
+                Opening a new tab gives the linked page access to your page via
+                <code>window.opener</code>. Adding
+                <code>rel="noopener noreferrer"</code> prevents this — a good
+                professional habit to introduce early.
+              </li>
+            </ul>
+            <h4>Alt Text Quality Rubric (for peer review)</h4>
+            <ul>
+              <li>
+                <strong>Poor:</strong> <code>alt="image"</code> or
+                <code>alt="photo"</code> — says nothing
+              </li>
+              <li>
+                <strong>Okay:</strong> <code>alt="dog"</code> — minimal but
+                passes validation
+              </li>
+              <li>
+                <strong>Good:</strong>
+                <code
+                  >alt="Golden retriever catching a frisbee in a sunny
+                  park"</code
+                >
+                — describes context
+              </li>
+              <li>
+                <strong>Decorative:</strong> <code>alt=""</code> — correct for
+                purely decorative images (screen reader skips it)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ DAY 4 ══════════════════════ -->
+    <div class="day-section d4">
+      <div class="container">
+        <div class="day-header">
+          <div class="day-number">04</div>
+          <div class="day-title-block">
+            <div class="day-label">Day Four</div>
+            <div class="day-title">Lists &amp; Tables</div>
+            <p class="day-summary">
+              Students learn to organize information using ordered and unordered
+              lists, and to represent structured data using HTML tables — while
+              developing a critical eye for when each is the right tool.
+            </p>
+          </div>
+        </div>
+
+        <div class="lesson-grid">
+          <div class="block">
+            <div class="block-label">Learning Objectives</div>
+            <ol class="objective-list">
+              <li>
+                Create ordered <code>&lt;ol&gt;</code> and unordered
+                <code>&lt;ul&gt;</code> lists with <code>&lt;li&gt;</code> items
+              </li>
+              <li>Build nested lists (a list inside a list item)</li>
+              <li>
+                Build a complete HTML table with <code>&lt;table&gt;</code>,
+                <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, and
+                <code>&lt;td&gt;</code>
+              </li>
+              <li>
+                Use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and
+                <code>&lt;tfoot&gt;</code> for table structure
+              </li>
+              <li>
+                Apply <code>colspan</code> and <code>rowspan</code> attributes
+              </li>
+              <li>
+                Explain when to use a table (tabular data) versus when NOT to
+                (page layout)
+              </li>
+            </ol>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Lesson Schedule (75 min)</div>
+            <div class="activity">
+              <div class="activity-type" style="color: #8e44ad">
+                Warm-Up — 5 min
+              </div>
+              Show a 90s-era website that used tables for layout (archive.org
+              has examples). Ask: "What's wrong with this approach?" Collect
+              guesses — revisit after instruction.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #8e44ad">
+                Instruction — 15 min
+              </div>
+              Unordered lists: no sequence implied (navigation menus, ingredient
+              lists). Ordered lists: sequence matters (step-by-step
+              instructions, rankings). Demo nested lists: homework checklist
+              with sub-tasks. Common mistake: putting anything other than
+              <code>&lt;li&gt;</code> directly inside
+              <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #8e44ad">
+                Instruction — 20 min
+              </div>
+              Tables: start with a simple 3-column schedule. Introduce
+              <code>&lt;table&gt;</code> → <code>&lt;tr&gt;</code> →
+              <code>&lt;th&gt;</code>/<code>&lt;td&gt;</code>. Add semantic
+              grouping: <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>.
+              Demonstrate <code>colspan="2"</code> to merge two columns.
+              Critical rule: tables are for tabular data, NOT page layout.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #d7bde2">
+                Guided Practice — 25 min
+              </div>
+              <strong>List challenge:</strong> Create a nested shopping list
+              with 3 categories, each with 3 items.
+              <strong>Table challenge:</strong> Build a class schedule table
+              with days as columns and periods as rows. Add a merged header cell
+              for "Weekend."
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #d7bde2">
+                Wrap-Up — 10 min
+              </div>
+              Return to warm-up screenshot. Students now explain the problem.
+              Exit ticket: "Give one example of data that belongs in a table,
+              and one that does not."
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Key Concepts &amp; Vocabulary</div>
+            <div class="vocab-grid">
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;ul&gt;</div>
+                <div class="vocab-def">
+                  Unordered list — bullet points, no sequence implied
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;ol&gt;</div>
+                <div class="vocab-def">
+                  Ordered list — numbered, sequence matters
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;li&gt;</div>
+                <div class="vocab-def">
+                  List item — must be a direct child of
+                  <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code>
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;table&gt;</div>
+                <div class="vocab-def">
+                  Container for tabular data with rows and columns
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;tr&gt;</div>
+                <div class="vocab-def">Table row</div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;th&gt;</div>
+                <div class="vocab-def">
+                  Table header cell — bold and centered by default
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;td&gt;</div>
+                <div class="vocab-def">Table data cell</div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">colspan</div>
+                <div class="vocab-def">
+                  Merges a cell across multiple columns
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Reference Code</div>
+            <div class="code-block" data-label="Lists & Tables">
+              <pre><span class="c">&lt;!-- Nested unordered list --&gt;</span>
+<span class="t">&lt;ul&gt;</span>
+  <span class="t">&lt;li&gt;</span><span class="s">Fruit</span>
+    <span class="t">&lt;ul&gt;</span>
+      <span class="t">&lt;li&gt;</span><span class="s">Apples</span><span class="t">&lt;/li&gt;</span>
+      <span class="t">&lt;li&gt;</span><span class="s">Bananas</span><span class="t">&lt;/li&gt;</span>
+    <span class="t">&lt;/ul&gt;</span>
+  <span class="t">&lt;/li&gt;</span>
+<span class="t">&lt;/ul&gt;</span>
+
+<span class="c">&lt;!-- Structured table with merged header --&gt;</span>
+<span class="t">&lt;table&gt;</span>
+  <span class="t">&lt;thead&gt;</span>
+    <span class="t">&lt;tr&gt;</span>
+      <span class="t">&lt;th&gt;</span><span class="s">Name</span><span class="t">&lt;/th&gt;</span>
+      <span class="t">&lt;th</span> <span class="a">colspan</span>=<span class="v">"2"</span><span class="t">&gt;</span><span class="s">Scores</span><span class="t">&lt;/th&gt;</span>
+    <span class="t">&lt;/tr&gt;</span>
+  <span class="t">&lt;/thead&gt;</span>
+  <span class="t">&lt;tbody&gt;</span>
+    <span class="t">&lt;tr&gt;</span>
+      <span class="t">&lt;td&gt;</span><span class="s">Alex</span><span class="t">&lt;/td&gt;</span>
+      <span class="t">&lt;td&gt;</span><span class="s">85</span><span class="t">&lt;/td&gt;</span>
+      <span class="t">&lt;td&gt;</span><span class="s">92</span><span class="t">&lt;/td&gt;</span>
+    <span class="t">&lt;/tr&gt;</span>
+  <span class="t">&lt;/tbody&gt;</span>
+<span class="t">&lt;/table&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="block full">
+            <div class="block-label">Teacher Notes &amp; Differentiation</div>
+            <div class="tip-box">
+              <strong>💡 Teacher Tip</strong>
+              Tables are highly visual — build them row by row on the projector.
+              After each <code>&lt;tr&gt;</code>, refresh the browser so
+              students see the table grow. This makes the row/cell relationship
+              concrete. Having students draw the expected table grid on paper
+              before coding it dramatically reduces errors.
+            </div>
+            <h4>The "Tables for Layout" Anti-Pattern (historical context)</h4>
+            <ul>
+              <li>
+                Before CSS was widely supported (~1999–2005), developers used
+                invisible tables to position content in columns. This was a
+                workaround, not a feature.
+              </li>
+              <li>
+                Today, tables for layout are an accessibility violation (screen
+                readers announce table structure) and are never used in
+                professional code.
+              </li>
+              <li>
+                This history makes for a great 5-minute discussion about how
+                standards evolve.
+              </li>
+            </ul>
+            <h4>Common Table Errors</h4>
+            <ul>
+              <li>
+                Mismatched cell counts per row — every row must have the same
+                number of cells (accounting for colspan).
+              </li>
+              <li>
+                Forgetting <code>&lt;/tr&gt;</code> closing tags — causes all
+                remaining rows to collapse.
+              </li>
+              <li>
+                Using <code>&lt;td&gt;</code> for headers instead of
+                <code>&lt;th&gt;</code> — loses semantic meaning and
+                accessibility.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ DAY 5 ══════════════════════ -->
+    <div class="day-section d5">
+      <div class="container">
+        <div class="day-header">
+          <div class="day-number">05</div>
+          <div class="day-title-block">
+            <div class="day-label">Day Five</div>
+            <div class="day-title">
+              Forms &amp; Mini-Project:<br />Putting It All Together
+            </div>
+            <p class="day-summary">
+              Students learn to build interactive HTML forms, then apply
+              everything from the week to create a complete multi-element
+              webpage — their launchpad for the CSS unit.
+            </p>
+          </div>
+        </div>
+
+        <div class="lesson-grid">
+          <div class="block">
+            <div class="block-label">Learning Objectives</div>
+            <ol class="objective-list">
+              <li>
+                Create a form using <code>&lt;form&gt;</code> with a meaningful
+                <code>action</code> attribute
+              </li>
+              <li>Add labeled inputs: text, email, password, number, date</li>
+              <li>
+                Use <code>&lt;label&gt;</code> correctly with the
+                <code>for</code>/<code>id</code> connection
+              </li>
+              <li>
+                Implement checkbox, radio button, and select dropdown inputs
+              </li>
+              <li>Add a <code>&lt;textarea&gt;</code> and a submit button</li>
+              <li>
+                Produce a complete HTML page combining all elements from the
+                unit
+              </li>
+              <li>Articulate why CSS is the natural next step</li>
+            </ol>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Lesson Schedule (75 min)</div>
+            <div class="activity">
+              <div class="activity-type" style="color: #e67e22">
+                Warm-Up — 5 min
+              </div>
+              Show a sign-up form on screen. Ask: "What HTML elements do you
+              think are used to build this? Write your guesses." Students will
+              be surprised how many they already recognize.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #e67e22">
+                Instruction — 20 min
+              </div>
+              The <code>&lt;form&gt;</code> element and the
+              <code>action</code> attribute (where data goes on submit).
+              Introduce <code>&lt;label&gt;</code> and the critical
+              <code>for</code>/<code>id</code> link — clicking a label focuses
+              its input. Common input types: text, email, password, number,
+              checkbox, radio. The <code>name</code> attribute — how form data
+              is identified. <code>&lt;select&gt;</code> +
+              <code>&lt;option&gt;</code> dropdowns.
+              <code>&lt;textarea&gt;</code> for multi-line text. Submit button
+              with <code>&lt;button type="submit"&gt;</code>.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #e67e22">
+                Mini-Project — 40 min
+              </div>
+              <strong>Personal Profile Page.</strong> Students build a complete
+              page with: a proper HTML5 boilerplate, a heading with their name,
+              a short bio paragraph using <code>&lt;strong&gt;</code> and
+              <code>&lt;em&gt;</code>, a profile image with alt text, a
+              navigation bar with links (home, about, contact) using a
+              <code>&lt;ul&gt;</code>, a table showing their weekly schedule,
+              and a contact form with name, email, message textarea, and submit.
+              This file becomes their starting point for CSS styling next week.
+            </div>
+            <div class="activity">
+              <div class="activity-type" style="color: #fad7a0">
+                Wrap-Up — 10 min
+              </div>
+              Gallery walk — students leave their browser open and walk around
+              to see each other's pages. Discussion: "Every page looks plain and
+              unstyled. What would you change if you could? That's exactly what
+              CSS does." Preview the CSS unit.
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Key Concepts &amp; Vocabulary</div>
+            <div class="vocab-grid">
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;form&gt;</div>
+                <div class="vocab-def">
+                  Container that groups inputs and sends data on submit
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">action</div>
+                <div class="vocab-def">
+                  URL that receives the form data when submitted
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;label&gt;</div>
+                <div class="vocab-def">
+                  Describes an input; <code>for</code> attr links it by
+                  <code>id</code>
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">name attr</div>
+                <div class="vocab-def">
+                  Key used to identify the input's value when form is submitted
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">type attr</div>
+                <div class="vocab-def">
+                  Defines input behavior: text, email, password, checkbox,
+                  radio…
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;select&gt;</div>
+                <div class="vocab-def">
+                  Dropdown menu; populated with
+                  <code>&lt;option&gt;</code> elements
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">&lt;textarea&gt;</div>
+                <div class="vocab-def">
+                  Multi-line text input — rows/cols set initial size
+                </div>
+              </div>
+              <div class="vocab-card">
+                <div class="vocab-term">required</div>
+                <div class="vocab-def">
+                  HTML attribute that prevents submission if field is empty
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="block-label">Reference Code</div>
+            <div class="code-block" data-label="HTML Form">
+              <pre><span class="t">&lt;form</span> <span class="a">action</span>=<span class="v">"/submit"</span> <span class="a">method</span>=<span class="v">"post"</span><span class="t">&gt;</span>
+
+  <span class="c">&lt;!-- Label links to input via matching for/id --&gt;</span>
+  <span class="t">&lt;label</span> <span class="a">for</span>=<span class="v">"username"</span><span class="t">&gt;</span><span class="s">Name:</span><span class="t">&lt;/label&gt;</span>
+  <span class="t">&lt;input</span> <span class="a">type</span>=<span class="v">"text"</span> <span class="a">id</span>=<span class="v">"username"</span>
+         <span class="a">name</span>=<span class="v">"username"</span> <span class="a">required</span><span class="t">&gt;</span>
+
+  <span class="t">&lt;label</span> <span class="a">for</span>=<span class="v">"email"</span><span class="t">&gt;</span><span class="s">Email:</span><span class="t">&lt;/label&gt;</span>
+  <span class="t">&lt;input</span> <span class="a">type</span>=<span class="v">"email"</span> <span class="a">id</span>=<span class="v">"email"</span>
+         <span class="a">name</span>=<span class="v">"email"</span><span class="t">&gt;</span>
+
+  <span class="c">&lt;!-- Radio buttons share the same name --&gt;</span>
+  <span class="t">&lt;input</span> <span class="a">type</span>=<span class="v">"radio"</span> <span class="a">name</span>=<span class="v">"grade"</span>
+         <span class="a">id</span>=<span class="v">"g11"</span> <span class="a">value</span>=<span class="v">"11"</span><span class="t">&gt;</span>
+  <span class="t">&lt;label</span> <span class="a">for</span>=<span class="v">"g11"</span><span class="t">&gt;</span><span class="s">Grade 11</span><span class="t">&lt;/label&gt;</span>
+
+  <span class="c">&lt;!-- Dropdown --&gt;</span>
+  <span class="t">&lt;select</span> <span class="a">name</span>=<span class="v">"subject"</span><span class="t">&gt;</span>
+    <span class="t">&lt;option</span> <span class="a">value</span>=<span class="v">"cs"</span><span class="t">&gt;</span><span class="s">Computer Science</span><span class="t">&lt;/option&gt;</span>
+    <span class="t">&lt;option</span> <span class="a">value</span>=<span class="v">"math"</span><span class="t">&gt;</span><span class="s">Math</span><span class="t">&lt;/option&gt;</span>
+  <span class="t">&lt;/select&gt;</span>
+
+  <span class="t">&lt;label</span> <span class="a">for</span>=<span class="v">"msg"</span><span class="t">&gt;</span><span class="s">Message:</span><span class="t">&lt;/label&gt;</span>
+  <span class="t">&lt;textarea</span> <span class="a">id</span>=<span class="v">"msg"</span> <span class="a">name</span>=<span class="v">"msg"</span>
+            <span class="a">rows</span>=<span class="v">"4"</span><span class="t">&gt;&lt;/textarea&gt;</span>
+
+  <span class="t">&lt;button</span> <span class="a">type</span>=<span class="v">"submit"</span><span class="t">&gt;</span><span class="s">Send</span><span class="t">&lt;/button&gt;</span>
+<span class="t">&lt;/form&gt;</span></pre>
+            </div>
+          </div>
+
+          <div class="block full">
+            <div class="block-label">
+              Mini-Project Rubric &amp; Teacher Notes
+            </div>
+            <div class="tip-box">
+              <strong>💡 Teacher Tip</strong>
+              The gallery walk at the end is powerful pedagogy. When every
+              student sees that raw HTML looks identical in style — plain
+              browser defaults — the motivation to learn CSS is visceral and
+              personal. "That's MY page and it looks boring" is more compelling
+              than any amount of explanation.
+            </div>
+
+            <h4>Mini-Project Assessment Checklist</h4>
+            <ul>
+              <li>
+                Valid HTML5 boilerplate with correct doctype, head, and body
+              </li>
+              <li>
+                Heading hierarchy used correctly (one H1, logical H2/H3 usage)
+              </li>
+              <li>At least one image with meaningful, non-empty alt text</li>
+              <li>
+                At least two working hyperlinks (one internal, one external)
+              </li>
+              <li>A list (ordered or unordered) used appropriately</li>
+              <li>
+                A table with <code>&lt;thead&gt;</code>,
+                <code>&lt;tbody&gt;</code>, <code>&lt;th&gt;</code>, and
+                <code>&lt;td&gt;</code>
+              </li>
+              <li>
+                A form with at least four inputs, all properly labeled with
+                <code>&lt;label&gt;</code>
+              </li>
+              <li>Code is consistently indented and readable</li>
+            </ul>
+
+            <h4>Bridging to CSS — Discussion Prompts</h4>
+            <ul>
+              <li>
+                "Your page is structured but unstyled. In CSS, you'll select
+                elements by tag name, class, or ID to apply styles. Notice that
+                your HTML already uses IDs on form inputs — those will become
+                CSS hooks."
+              </li>
+              <li>
+                "Every HTML element has a default browser style. CSS lets you
+                override any of them — fonts, colors, spacing, layout,
+                animations."
+              </li>
+              <li>
+                "The block vs. inline distinction you learned today is the
+                foundation of the CSS box model. You'll come back to it
+                constantly."
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ CHEAT SHEET ══════════════════════ -->
+    <div class="day-section" style="background: #fff">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 48px">
+          <div
+            style="
+              font-family: &quot;Source Code Pro&quot;, monospace;
+              font-size: 11px;
+              letter-spacing: 3px;
+              text-transform: uppercase;
+              color: var(--muted);
+              margin-bottom: 12px;
+            "
+          >
+            Appendix
+          </div>
+          <h2
+            style="
+              font-family: &quot;Playfair Display&quot;, serif;
+              font-size: 40px;
+              font-weight: 700;
+            "
+          >
+            Unit Cheat Sheet
+          </h2>
+          <p style="color: var(--muted); margin-top: 8px">
+            Distribute to students on Day 1 — they add to it each day
+          </p>
+        </div>
+
+        <div class="lesson-grid">
+          <div class="block">
+            <div
+              class="block-label"
+              style="color: #c0392b; border-color: rgba(192, 57, 43, 0.2)"
+            >
+              Day 1 — Structure
+            </div>
+            <div class="code-block" data-label="">
+              <pre
+                style="font-size: 12px"
+              ><span class="t">&lt;!DOCTYPE html&gt;</span>
+<span class="t">&lt;html&gt;&lt;head&gt;&lt;title&gt;</span><span class="s">…</span><span class="t">&lt;/title&gt;&lt;/head&gt;</span>
+<span class="t">&lt;body&gt;</span> <span class="c">← visible content</span>
+<span class="t">&lt;/body&gt;&lt;/html&gt;</span></pre>
+            </div>
+          </div>
+          <div class="block">
+            <div
+              class="block-label"
+              style="color: #2980b9; border-color: rgba(41, 128, 185, 0.2)"
+            >
+              Day 2 — Text
+            </div>
+            <div class="code-block" data-label="">
+              <pre
+                style="font-size: 12px"
+              ><span class="t">&lt;h1&gt;</span><span class="s">–</span><span class="t">&lt;h6&gt;</span>  <span class="t">&lt;p&gt;  &lt;br&gt;</span>
+<span class="t">&lt;strong&gt;  &lt;em&gt;  &lt;mark&gt;</span>
+<span class="t">&lt;code&gt;  &lt;span&gt;</span>
+<span class="c">&lt;!-- block vs. inline --&gt;</span></pre>
+            </div>
+          </div>
+          <div class="block">
+            <div
+              class="block-label"
+              style="color: #27ae60; border-color: rgba(39, 174, 96, 0.2)"
+            >
+              Day 3 — Links &amp; Media
+            </div>
+            <div class="code-block" data-label="">
+              <pre
+                style="font-size: 12px"
+              ><span class="t">&lt;a</span> <span class="a">href</span>=<span class="v">"url"</span><span class="t">&gt;</span><span class="s">Link</span><span class="t">&lt;/a&gt;</span>
+<span class="t">&lt;img</span> <span class="a">src</span>=<span class="v">"…"</span> <span class="a">alt</span>=<span class="v">"desc"</span><span class="t">&gt;</span>
+<span class="t">&lt;video</span> <span class="a">src</span>=<span class="v">"…"</span> <span class="a">controls</span><span class="t">&gt;&lt;/video&gt;</span></pre>
+            </div>
+          </div>
+          <div class="block">
+            <div
+              class="block-label"
+              style="color: #8e44ad; border-color: rgba(142, 68, 173, 0.2)"
+            >
+              Day 4 — Lists &amp; Tables
+            </div>
+            <div class="code-block" data-label="">
+              <pre
+                style="font-size: 12px"
+              ><span class="t">&lt;ul&gt;&lt;li&gt;</span><span class="s">…</span><span class="t">&lt;/li&gt;&lt;/ul&gt;</span>
+<span class="t">&lt;ol&gt;&lt;li&gt;</span><span class="s">…</span><span class="t">&lt;/li&gt;&lt;/ol&gt;</span>
+<span class="t">&lt;table&gt;&lt;tr&gt;&lt;th&gt;</span><span class="s">H</span><span class="t">&lt;/th&gt;</span>
+<span class="t">&lt;td&gt;</span><span class="s">Data</span><span class="t">&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</span></pre>
+            </div>
+          </div>
+          <div class="block full">
+            <div
+              class="block-label"
+              style="color: #e67e22; border-color: rgba(230, 126, 34, 0.2)"
+            >
+              Day 5 — Forms
+            </div>
+            <div class="code-block" data-label="">
+              <pre
+                style="font-size: 12px"
+              ><span class="t">&lt;form</span> <span class="a">action</span>=<span class="v">"…"</span><span class="t">&gt;</span>
+  <span class="t">&lt;label</span> <span class="a">for</span>=<span class="v">"x"</span><span class="t">&gt;</span><span class="s">Label</span><span class="t">&lt;/label&gt;</span>
+  <span class="t">&lt;input</span> <span class="a">type</span>=<span class="v">"text"</span> <span class="a">id</span>=<span class="v">"x"</span> <span class="a">name</span>=<span class="v">"x"</span><span class="t">&gt;</span>
+  <span class="t">&lt;select</span> <span class="a">name</span>=<span class="v">"s"</span><span class="t">&gt;&lt;option&gt;</span><span class="s">…</span><span class="t">&lt;/option&gt;&lt;/select&gt;</span>
+  <span class="t">&lt;textarea</span> <span class="a">name</span>=<span class="v">"msg"</span><span class="t">&gt;&lt;/textarea&gt;</span>
+  <span class="t">&lt;button</span> <span class="a">type</span>=<span class="v">"submit"</span><span class="t">&gt;</span><span class="s">Submit</span><span class="t">&lt;/button&gt;</span>
+<span class="t">&lt;/form&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
