@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Can you Dig it?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="gameSetup">
+      <h1>Can you Dig it?</h1>
+      <ul>
+        <li>
+          Difficulty:
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </li>
+        <li>
+          Size:
+          <select id="size">
+            <option value="10">Small</option>
+            <option value="20">Medium</option>
+            <option value="30">Large</option>
+          </select>
+        </li>
+      </ul>
+      <button type="button" onclick="generatePath()">Generate Path</button>
+      <button id="hintButton" type="button" onclick="toggleHint()">
+        Show Hint
+      </button>
+      <button id="numberHintButton" type="button" onclick="toggleNumberHint()">
+        Show Number Hint
+      </button>
+    </div>
+
+    <div class="gameFrame" id="gameFrame">
+      <div class="borderZone borderTop"></div>
+      <div class="borderZone borderRight"></div>
+      <div class="borderZone borderBottom"></div>
+      <div class="borderZone borderLeft"></div>
+      <div class="gameBox" id="gameBox"></div>
+    </div>
+
+    <div class="instructions">
+      <h2>How to Play</h2>
+      <ul>
+        <li>Start at the green tile.</li>
+        <li>Flip as many tiles as possible on the path to the red tile.</li>
+        <li>Tiles can only be flipped horizontally or vertically.</li>
+        <li>Go off the path: -1 point and start again at the green tile.</li>
+      </ul>
+    </div>
+    <script defer src="script.js"></script>
+  </body>
+</html>
